@@ -2,41 +2,83 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
+}
+
+.app-header {
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin: 0.75rem 0 1rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background: #222;
+  color: #fff;
+  cursor: pointer;
 }
+.btn:hover { filter: brightness(1.1); }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
+.subtitle {
   color: #888;
+  margin-bottom: 1rem;
 }
+
+.flashcards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 12px;
+}
+
+.flashcard {
+  position: relative;
+  border: 1px solid #444;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #111;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+}
+.flashcard:hover { transform: translateY(-2px); }
+.flashcard.revealed { border-color: #646cff; box-shadow: 0 0 0 2px #646cff44 inset; }
+
+.flashcard-front, .flashcard-back {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+}
+
+.flashcard-back { display: none; }
+.flashcard.revealed .flashcard-front { display: none; }
+.flashcard.revealed .flashcard-back { display: flex; }
+
+.flashcard-char {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.flashcard-id {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  color: #999;
+  font-size: 0.8rem;
+}
+
+.flashcard-unicode { font-size: 0.95rem; color: #ddd; }
+.flashcard-sound { font-size: 0.8rem; color: #999; margin-top: 4px; }
